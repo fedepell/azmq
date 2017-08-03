@@ -19,7 +19,7 @@ AZMQ_V1_INLINE_NAMESPACE_BEGIN
     /** \brief custom error_category to map zeromq errors */
     class error_category : public boost::system::error_category {
     public:
-        const char* name() const BOOST_SYSTEM_NOEXCEPT override {
+        const char* name() const _GLIBCXX_USE_NOEXCEPT override {
             return "ZeroMQ";
         }
 

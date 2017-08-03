@@ -35,7 +35,7 @@ endif()
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/config")
 
-find_package(Boost 1.54 COMPONENTS system log date_time thread chrono regex random REQUIRED)
+find_package(Boost 1.53 COMPONENTS system date_time thread chrono regex random REQUIRED)
 find_package(ZeroMQ 4.0 REQUIRED)
 
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)

@@ -27,7 +27,7 @@ public:
         frontend_.async_receive(asio::buffer(buf_), [this](boost::system::error_code const& ec, size_t bytes_transferred) {
             if (ec)
                 return;
-            if (boost::string_ref(buf_.data(), bytes_transferred - 1) == "PONG")
+            if (boost::string_ref(buf_.data(), bytes_transferred - 1) == boost::string_ref("PONG",4))
                 pimpl_->pongs_++;
         });
     }
@@ -61,7 +61,7 @@ private:
                     return; // exit on error
 
                 if (auto p = pimpl.lock()) {
-                    if (boost::string_ref(p->buf_.data(), bytes_transferred - 1) != "PING")
+                    if (boost::string_ref(p->buf_.data(), bytes_transferred - 1) != boost::string_ref("PING",4))
                         return; // exit if not PING
                     p->pings_++;
                     backend.send(asio::buffer("PONG"));
